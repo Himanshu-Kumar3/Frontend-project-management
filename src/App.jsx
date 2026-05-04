@@ -21,9 +21,6 @@ function App() {
     <Provider store={store}>
       <BrowserRouter basename="/">
     <Routes>
-      
-      <Route path="/Signup" element={<Signup/>}/>
-      
       <Route path="/"  element={<MainPage/>}>
       <Route index element={<Dashboard/>}/>
       <Route path="projects"  element={<Projects/>}/>
@@ -31,6 +28,7 @@ function App() {
       <Route path="setting" element={<Setting/>}/>
       <Route path="projects/project/:projectId" element={<Project/>}/>
       </Route>
+      <Route path="/Signup" element={<Signup/>}/>
       <Route path="/create-workspace" element={<CreateWorkspace/>}/>
 
     </Routes>
