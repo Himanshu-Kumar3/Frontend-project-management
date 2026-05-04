@@ -1,1 +1,1 @@
-export const BASE_URL = "https://project-management-tool-7f6l.onrender.com";
+export const BASE_URL = "http://localhost:8080";
