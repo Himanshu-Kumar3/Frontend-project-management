@@ -29,8 +29,13 @@ const projectSlice = createSlice({
             },
             removeProject(state , action){
                   state.project = state.projects.filter((item)=> item !== action.payload);
+            },
+            removeProjects(state , action){
+                 state.project = null ;
+                 state.projects = [];
+                 return
             }
       }
 });
-export const {addProject , addprojects , appendProject,updateProjects, removeProject} = projectSlice.actions;
+export const {addProject , addprojects ,removeProjects, appendProject,updateProjects, removeProject} = projectSlice.actions;
 export default projectSlice.reducer;

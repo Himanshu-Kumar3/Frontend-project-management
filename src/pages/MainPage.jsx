@@ -15,36 +15,26 @@ const MainPage = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  // const getWorkspaceInfo = async()=>{
-  //   try{
-  //     if(workspace) return ;
-  //     const res = await axios.get(BASE_URL + "/user/getWorkspace" , {withCredentials:true});
-      
-  //     dispatch(addWorkspace(res?.data?.data[0]));
-  //   }catch(er){
-  //   console.log(er?.message);
-  //    if(er?.response?.status === 404){
-  //     navigate("/create-workspace");
-  //    }
-
-  //   }
-
-
-  // }
 
   const getUserAndWorkspace = async()=>{
     try{
-      if(user) return ;
+      let currentUser = user;
+      console.log("current User" , currentUser)
+      if(!currentUser){
       const resUser = await axios.get(BASE_URL + "/user/getUser" , {withCredentials:true})
 
+      console.log(resUser.data)
       dispatch(addUser(resUser.data))
+      }
 
       const res = await axios.get(BASE_URL +"/user/getWorkspace" , {withCredentials:true})
 
+      console.log(res.data.data[0])
       dispatch(addWorkspace(res?.data.data[0]))
 
     }catch(er){
-      if(er.response.status === 404){
+      console.log(er.response);
+      if(er.response.status === 404){ // have to change this
         navigate("/Signup");
       }
       if(er.response.status === 401){
@@ -60,9 +50,18 @@ const MainPage = () => {
 
   
   },[])
+       
 
-  if(!user) return;
-
+    if (!workspace) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading your workspace...</p>
+        </div>
+      </div>
+    );
+  }
 
   
   return (

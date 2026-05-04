@@ -30,10 +30,15 @@ const taskSlice = createSlice({
                  
             },removeTask(state , action){
                   state.tasks.filter(task => !task.includes(action.payload))
+            },removeTasks(state, action){
+                  state.task = null
+                  state.tasks = [];
+                  state.projectTask = {}
+                  return;
             }
       }
       
 });
 
-export const {addTask, addTasks , appendTask , addProjectTask , removeTask} = taskSlice.actions;
+export const {addTask, addTasks , appendTask,removeTasks , addProjectTask , removeTask} = taskSlice.actions;
 export default taskSlice.reducer;

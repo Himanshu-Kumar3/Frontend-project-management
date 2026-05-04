@@ -22,7 +22,7 @@ function App() {
       <BrowserRouter basename="/">
     <Routes>
       <Route path="/"  element={<MainPage/>}>
-      <Route index element={<Dashboard/>}/>
+      <Route path="/" element={<Dashboard/>}/>
       <Route path="projects"  element={<Projects/>}/>
       <Route path="team" element={<Team/>}/>
       <Route path="setting" element={<Setting/>}/>
